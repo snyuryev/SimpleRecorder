@@ -46,6 +46,7 @@ class RecordingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +65,7 @@ class RecordingsViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 200, 0)
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 180, 0)
     }
     
     // MARK: - Data
