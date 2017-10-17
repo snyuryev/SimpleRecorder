@@ -7,22 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051088691F95D2D400593D32 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051088681F95D2D400593D32 /* ContentViewController.swift */; };
 		0523F00B1F9022030044EF3E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523F00A1F9022030044EF3E /* Double+Extensions.swift */; };
 		0538971B1F8F53940039A98D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538971A1F8F53940039A98D /* AppDelegate.swift */; };
-		0538971D1F8F53940039A98D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538971C1F8F53940039A98D /* ViewController.swift */; };
+		0538971D1F8F53940039A98D /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0538971C1F8F53940039A98D /* RecorderViewController.swift */; };
 		053897201F8F53940039A98D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0538971E1F8F53940039A98D /* Main.storyboard */; };
 		053897221F8F53940039A98D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 053897211F8F53940039A98D /* Assets.xcassets */; };
 		053897251F8F53940039A98D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053897231F8F53940039A98D /* LaunchScreen.storyboard */; };
 		053897351F8F8BC70039A98D /* AudioPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053897341F8F8BC70039A98D /* AudioPlotView.swift */; };
 		053897391F8F8C960039A98D /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053897381F8F8C960039A98D /* Int+Extensions.swift */; };
+		0556F3631F94D40F00867945 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0538972D1F8F57180039A98D /* AVFoundation.framework */; };
 		05FC4B651F9012900042E816 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FC4B641F9012900042E816 /* Accelerate.framework */; };
+		05FF19B01F91202B00A1AE9F /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FF19AF1F91202B00A1AE9F /* RecordingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051088681F95D2D400593D32 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		0523F00A1F9022030044EF3E /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		053897171F8F53940039A98D /* SimpleRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0538971A1F8F53940039A98D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0538971C1F8F53940039A98D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0538971C1F8F53940039A98D /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		0538971F1F8F53940039A98D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		053897211F8F53940039A98D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		053897241F8F53940039A98D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 		053897341F8F8BC70039A98D /* AudioPlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlotView.swift; sourceTree = "<group>"; };
 		053897381F8F8C960039A98D /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		05FC4B641F9012900042E816 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		05FF19AF1F91202B00A1AE9F /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0556F3631F94D40F00867945 /* AVFoundation.framework in Frameworks */,
 				05FC4B651F9012900042E816 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,7 +72,9 @@
 			isa = PBXGroup;
 			children = (
 				0538971A1F8F53940039A98D /* AppDelegate.swift */,
-				0538971C1F8F53940039A98D /* ViewController.swift */,
+				0538971C1F8F53940039A98D /* RecorderViewController.swift */,
+				051088681F95D2D400593D32 /* ContentViewController.swift */,
+				05FF19AF1F91202B00A1AE9F /* RecordingsViewController.swift */,
 				053897341F8F8BC70039A98D /* AudioPlotView.swift */,
 				053897381F8F8C960039A98D /* Int+Extensions.swift */,
 				0523F00A1F9022030044EF3E /* Double+Extensions.swift */,
@@ -159,11 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0538971D1F8F53940039A98D /* ViewController.swift in Sources */,
+				0538971D1F8F53940039A98D /* RecorderViewController.swift in Sources */,
 				053897351F8F8BC70039A98D /* AudioPlotView.swift in Sources */,
+				05FF19B01F91202B00A1AE9F /* RecordingsViewController.swift in Sources */,
 				053897391F8F8C960039A98D /* Int+Extensions.swift in Sources */,
 				0538971B1F8F53940039A98D /* AppDelegate.swift in Sources */,
 				0523F00B1F9022030044EF3E /* Double+Extensions.swift in Sources */,
+				051088691F95D2D400593D32 /* ContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

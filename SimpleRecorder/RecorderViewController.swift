@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecorderViewController.swift
 //  SimpleRecorder
 //
 //  Created by Sergey Yuryev on 12/10/2017.
@@ -18,7 +18,13 @@ enum RecorderState {
 
 let kSimpleRecordingAutoRecordingKey = "kSimpleRecordingAutoRecordingKey"
 
-class ViewController: UIViewController {
+protocol RecorderViewControllerDelegate: class {
+    func didStartRecording()
+    func didAddRecording()
+    func didFinishRecording()
+}
+
+class RecorderViewController: UIViewController {
 
     // MARK: - Vars
     
@@ -43,14 +49,19 @@ class ViewController: UIViewController {
     /// Silence timestamp
     private var silenceTs: Double = 0
     
+    /// File to write recording audio
+    private var audioFile: AVAudioFile?
+    
+    /// Recorder delegate
+    weak var delegate: RecorderViewControllerDelegate?
     
     // MARK: - Outlets
     
-    /// Info about record types
-    @IBOutlet weak var typeLabel: UILabel!
+    /// Fade view
+    @IBOutlet weak var fadeView: UIView!
     
-    /// Allow to select recording type
-    @IBOutlet weak var recordType: UISegmentedControl!
+    /// Info about recording
+    @IBOutlet weak var infoLabel: UILabel!
     
     /// Time of recording
     @IBOutlet weak var timeLabel: UILabel!
@@ -67,15 +78,14 @@ class ViewController: UIViewController {
     /// Opens settings
     @IBOutlet weak var settingsButton: UIButton!
     
-    /// File to write recording audio
-    private var audioFile: AVAudioFile?
+    /// Buttons to show results
+    @IBOutlet weak var resultsButton: UIButton!
     
     
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,23 +105,7 @@ class ViewController: UIViewController {
     }
     
     
-    // MARK: - Setup
-    
-    private func setup() {
-        let defaults = UserDefaults.standard
-        let selected = defaults.integer(forKey: kSimpleRecordingAutoRecordingKey)
-        self.recordType.selectedSegmentIndex = selected
-    }
-    
-    
     // MARK: - Actions
-    
-    @IBAction func recordTypeChanged(_ sender: Any) {
-        let selected = self.recordType.selectedSegmentIndex
-        let defaults = UserDefaults.standard
-        defaults.set(selected, forKey: kSimpleRecordingAutoRecordingKey)
-        defaults.synchronize()
-    }
     
     @IBAction func settingsButtonTap(_ sender: Any) {
         let url = URL(string: UIApplicationOpenSettingsURLString)!
@@ -140,8 +134,8 @@ class ViewController: UIViewController {
             self.settingsButton.isHidden = true
             self.recorderPlot.isHidden = false
             self.timeLabel.isHidden = false
-            self.typeLabel.isHidden = false
-            self.recordType.isHidden = false
+            self.infoLabel.isHidden = true
+            self.resultsButton.isHidden = true
             break
         case .stopped:
             UIApplication.shared.isIdleTimerDisabled = false
@@ -151,8 +145,8 @@ class ViewController: UIViewController {
             self.settingsButton.isHidden = true
             self.recorderPlot.isHidden = true
             self.timeLabel.isHidden = true
-            self.typeLabel.isHidden = false
-            self.recordType.isHidden = false
+            self.infoLabel.isHidden = false
+            self.resultsButton.isHidden = false
             break
         case .denied:
             UIApplication.shared.isIdleTimerDisabled = false
@@ -161,8 +155,8 @@ class ViewController: UIViewController {
             self.settingsButton.isHidden = false
             self.recorderPlot.isHidden = true
             self.timeLabel.isHidden = true
-            self.typeLabel.isHidden = true
-            self.recordType.isHidden = true
+            self.infoLabel.isHidden = true
+            self.resultsButton.isHidden = true
             break
         }
     }
@@ -171,9 +165,12 @@ class ViewController: UIViewController {
     // MARK: - Recording
     
     private func startRecording() {
-        self.audioFile = self.createAudioRecordFile()
+        if let d = self.delegate {
+            d.didStartRecording()
+        }
+        
         self.recordingTs = NSDate().timeIntervalSince1970
-        self.silenceTs = NSDate().timeIntervalSince1970
+        self.silenceTs = 0 
         
         do {
             let session = AVAudioSession.sharedInstance()
@@ -203,7 +200,7 @@ class ViewController: UIViewController {
             else if average < -100 {
                 average = -100
             }
-
+            let silent = average < level
             let ts = NSDate().timeIntervalSince1970
             if ts - self.renderTs > 0.1 {
                 let floats = UnsafeBufferPointer(start: channels[0], count: Int(buffer.frameLength))
@@ -213,41 +210,46 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     let seconds = (ts - self.recordingTs)
                     self.timeLabel.text = seconds.toTimeString
-                    
                     self.renderTs = ts
                     let len = self.recorderPlot.waveforms.count
                     for i in 0 ..< len {
                         let idx = ((frame.count - 1) * i) / len
-                        let f:Float = sqrt(1.5 * abs(Float(frame[idx])) / Float(Int16.max))
+                        let f: Float = sqrt(1.5 * abs(Float(frame[idx])) / Float(Int16.max))
                         self.recorderPlot.waveforms[i] = min(49, Int(f * 50))
                     }
-                    if average < level {
-                        self.recorderPlot.color = UIColor.gray.cgColor
-                    }
-                    else {
-                        self.recorderPlot.color = UIColor.red.cgColor
-                    }
+                    self.recorderPlot.active = !silent
                     self.recorderPlot.setNeedsDisplay()
                 }
             }
             
             var write = false
-            if average < level {
-                if ts - self.silenceTs < 0.25 {
+            if silent {
+                if ts - self.silenceTs < 0.25 && self.silenceTs > 0 {
                     write = true
+                }
+                else {
+                    self.audioFile = nil
+                    if let d = self.delegate {
+                        d.didAddRecording()
+                    }
                 }
             }
             else {
                 write = true
                 self.silenceTs = ts
             }
-
-            if let f = self.audioFile, write {
-                do {
-                    try f.write(from: buffer)
+            
+            if write {
+                if self.audioFile == nil {
+                    self.audioFile = self.createAudioRecordFile()
                 }
-                catch let error as NSError {
-                    print(error.localizedDescription)
+                if let f = self.audioFile {
+                    do {
+                        try f.write(from: buffer)
+                    }
+                    catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
@@ -262,6 +264,11 @@ class ViewController: UIViewController {
     }
     
     private func stopRecording() {
+        if let d = self.delegate {
+            d.didFinishRecording()
+        }
+        
+        self.audioFile = nil
         self.audioEngine.inputNode.removeTap(onBus: 0)
         self.audioEngine.stop()
         do {
@@ -286,11 +293,13 @@ class ViewController: UIViewController {
         switch permission {
         case .undetermined:
             AVAudioSession.sharedInstance().requestRecordPermission({ (result) in
-                if result {
-                    self.startRecording()
-                }
-                else {
-                    self.updateUI(.denied)
+                DispatchQueue.main.async {
+                    if result {
+                        self.startRecording()
+                    }
+                    else {
+                        self.updateUI(.denied)
+                    }
                 }
             })
             break
@@ -320,7 +329,7 @@ class ViewController: UIViewController {
     
     private func createAudioRecordPath() -> URL? {
         let format = DateFormatter()
-        format.dateFormat="yyyy-MM-dd-HH-mm-ss"
+        format.dateFormat="yyyy-MM-dd-HH-mm-ss-SSS"
         let currentFileName = "recording-\(format.string(from: Date()))" + ".wav"
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let url = documentsDirectory.appendingPathComponent(currentFileName)

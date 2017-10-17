@@ -15,6 +15,18 @@ class AudioPlotView: UIView {
     /// Bar width
     var barWidth: CGFloat = 4.0
     
+    /// Indicate that waveform should draw active/inactive state
+    var active = false {
+        didSet {
+            if self.active {
+                self.color = UIColor.red.cgColor
+            }
+            else {
+                self.color = UIColor.gray.cgColor
+            }
+        }
+    }
+    
     /// Color for bars
     var color = UIColor.gray.cgColor
     
