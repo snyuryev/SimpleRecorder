@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fhi-YP-qHY">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RecorderViewController" customModule="SimpleRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTO-tZ-0Li">
-                                <rect key="frame" x="138.5" y="35" width="98" height="30"/>
+                                <rect key="frame" x="158" y="35" width="98" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="eDS-fm-css"/>
                                 </constraints>
@@ -29,14 +29,14 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b1-fp-C5m" customClass="AudioPlotView" customModule="SimpleRecorder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="10" width="325" height="80"/>
+                                <rect key="frame" x="0.0" y="10" width="364" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="J1s-1B-QCj"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iak-ao-R1N">
-                                <rect key="frame" x="325" y="10" width="40" height="40"/>
+                                <rect key="frame" x="364" y="10" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Eeo-qi-B8d"/>
                                     <constraint firstAttribute="height" constant="40" id="Q0e-ON-hHd"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-h5-BKH">
-                                <rect key="frame" x="325" y="50" width="40" height="40"/>
+                                <rect key="frame" x="364" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="AYg-iX-9fY"/>
                                     <constraint firstAttribute="width" constant="40" id="Tcu-Cv-Iu0"/>
@@ -57,13 +57,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow microphone in Settings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L79-7L-6sI">
-                                <rect key="frame" x="50" y="5" width="275" height="21"/>
+                                <rect key="frame" x="69.666666666666686" y="5.6666666666666679" width="275" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap mic to start recording" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Q0-KOu">
-                                <rect key="frame" x="50" y="18.5" width="275" height="21"/>
+                                <rect key="frame" x="69.666666666666686" y="18.666666666666668" width="275" height="21.000000000000004"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="AFH-GS-6si"/>
                                     <constraint firstAttribute="width" constant="275" id="Yb8-9c-dy4"/>
@@ -73,17 +73,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-yW-Hy1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="HX3-h5-BKH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="325" id="0tw-Gn-ZMs"/>
                             <constraint firstItem="Qyh-Q0-KOu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1PH-9b-QpJ"/>
                             <constraint firstItem="iak-ao-R1N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="88Y-Vo-EPr"/>
                             <constraint firstItem="g5y-yW-Hy1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9E9-rb-5ci"/>
                             <constraint firstAttribute="bottom" secondItem="g5y-yW-Hy1" secondAttribute="bottom" id="Akr-hn-XDt"/>
+                            <constraint firstItem="HX3-h5-BKH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="BeS-4p-NNl"/>
                             <constraint firstItem="g5y-yW-Hy1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DPi-8l-quZ"/>
                             <constraint firstItem="Qyh-Q0-KOu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-21" id="IrY-Gs-5pM"/>
                             <constraint firstItem="L79-7L-6sI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LH8-oh-RfW"/>
@@ -100,24 +100,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Record" id="EaT-At-hhc">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="vuI-0w-5s5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IgJ-Id-6nE">
-                                <rect key="frame" x="281" y="7" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2Bx-UG-AhE"/>
-                                </constraints>
-                                <state key="normal" title="Recordings"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Record" id="EaT-At-hhc"/>
                     <connections>
                         <outlet property="fadeView" destination="g5y-yW-Hy1" id="iUV-zV-j9v"/>
                         <outlet property="infoLabel" destination="Qyh-Q0-KOu" id="jeO-hQ-h5I"/>
                         <outlet property="recordButton" destination="iak-ao-R1N" id="86r-6o-0Yp"/>
                         <outlet property="recorderPlot" destination="0b1-fp-C5m" id="saE-eF-Ut2"/>
-                        <outlet property="resultsButton" destination="IgJ-Id-6nE" id="J55-A4-cJ8"/>
                         <outlet property="settingsButton" destination="hTO-tZ-0Li" id="W7l-LL-wIr"/>
                         <outlet property="settingsLabel" destination="L79-7L-6sI" id="kxN-1i-OuA"/>
                         <outlet property="timeLabel" destination="HX3-h5-BKH" id="Ved-QN-aeb"/>
@@ -125,29 +113,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="-269"/>
+            <point key="canvasLocation" x="1286" y="-300"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="azp-8b-ahd">
             <objects>
                 <viewController id="uwI-nu-rNh" customClass="ContentViewController" customModule="SimpleRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XyQ-v4-Kxo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-FY-nUi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
-                                    <segue destination="pz6-W1-snS" kind="embed" id="gz4-3u-Iks"/>
+                                    <segue destination="pz6-W1-snS" kind="embed" id="YVS-ZT-ZUe"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1F-Q5-hl2">
-                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="636" width="414" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="UrP-3R-gOI"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="embed" id="9Tl-A8-hsu"/>
+                                    <segue destination="BYZ-38-t0r" kind="embed" id="2Iz-vo-zb4"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -169,12 +157,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ybk-ZV-SYX">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="tLY-7E-DCs">
-                            <rect key="frame" x="129" y="7" width="117" height="30"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="tLY-7E-DCs">
+                            <rect key="frame" x="148.66666666666666" y="7" width="116.99999999999997" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="MZp-qV-lpt"/>
-                            </constraints>
                             <segments>
                                 <segment title="Manual"/>
                                 <segment title="Auto"/>
@@ -199,17 +184,17 @@
             <objects>
                 <viewController title="Recordings" id="pz6-W1-snS" customClass="RecordingsViewController" customModule="SimpleRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rvx-0b-oMp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no recordings." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9g3-cD-CQ2">
-                                <rect key="frame" x="57" y="318.5" width="260.5" height="30"/>
+                                <rect key="frame" x="76.666666666666657" y="353" width="260.66666666666674" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-Ej-z1u">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="pz6-W1-snS" id="jFo-Mi-K5y"/>
@@ -217,7 +202,7 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-wd-eU2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -236,6 +221,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6gr-6O-1ec"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9aL-qz-HxD"/>
                     <connections>
                         <outlet property="fadeView" destination="sgK-wd-eU2" id="6No-XJ-24g"/>
                         <outlet property="tableView" destination="SxV-Ej-z1u" id="4xU-ah-JQK"/>
@@ -251,12 +237,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fhi-YP-qHY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BNU-m6-de6">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uwI-nu-rNh" kind="relationship" relationship="rootViewController" id="xpb-Nf-XZJ"/>
+                        <segue destination="uwI-nu-rNh" kind="relationship" relationship="rootViewController" id="Duu-6f-PWR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1F-Ci-aqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
